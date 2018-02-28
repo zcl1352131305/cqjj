@@ -16,6 +16,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="cqjj" target="1.7" />
       <module name="spring-cloud" target="1.7" />
       <module name="sys-admin" target="1.7" />
       <module name="sys-api" target="1.7" />
