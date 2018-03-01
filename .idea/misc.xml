@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/sys-admin/pom.xml" />
         <option value="$PROJECT_DIR$/sys-gate/pom.xml" />
         <option value="$PROJECT_DIR$/sys-auth/pom.xml" />
+        <option value="$PROJECT_DIR$/cqjj-trade/pom.xml" />
       </list>
     </option>
   </component>

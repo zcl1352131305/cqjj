@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zoucl.cloud.trade.mapper.MerchantMapper">
+  <resultMap id="BaseResultMap" type="cn.zoucl.cloud.trade.model.entity.Merchant">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="sys_user_id" jdbcType="VARCHAR" property="sysUserId" />
+    <result column="merchant_id" jdbcType="VARCHAR" property="merchantId" />
+    <result column="merchant_name" jdbcType="VARCHAR" property="merchantName" />
+    <result column="merchant_credit_code" jdbcType="VARCHAR" property="merchantCreditCode" />
+    <result column="merchant_business_license" jdbcType="VARCHAR" property="merchantBusinessLicense" />
+    <result column="contact" jdbcType="VARCHAR" property="contact" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="enabled" jdbcType="VARCHAR" property="enabled" />
+    <result column="audit_state" jdbcType="VARCHAR" property="auditState" />
+    <result column="audit_refuse_reason" jdbcType="VARCHAR" property="auditRefuseReason" />
+    <result column="last_login" jdbcType="VARCHAR" property="lastLogin" />
+
+
+
+    <result column="date_created" jdbcType="DATE" property="dateCreated" />
+    <result column="create_id" jdbcType="VARCHAR" property="createId" />
+    <result column="create_ip" jdbcType="VARCHAR" property="createIp" />
+    <result column="date_updated" jdbcType="DATE" property="dateUpdated" />
+    <result column="update_id" jdbcType="VARCHAR" property="updateId" />
+    <result column="update_ip" jdbcType="VARCHAR" property="updateIp" />
+    <result column="version" jdbcType="VARCHAR" property="version" />
+    <result column="del_flag" jdbcType="VARCHAR" property="delFlag" />
+
+  </resultMap>
+
+
+
+
+</mapper>

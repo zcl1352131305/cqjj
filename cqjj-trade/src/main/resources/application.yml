@@ -2,7 +2,7 @@ spring:
   profiles:
     active: dev
   application:
-    name: sys-admin
+    name: cqjj-trade
   datasource:
     initialSize: 5
     minIdle: 5
@@ -20,7 +20,7 @@ spring:
     useGlobalDataSourceStat: true
 
 mybatis:
-  basepackage: cn.zoucl.cloud.admin.mapper
+  basepackage: cn.zoucl.cloud.trade.mapper
   xmlLocation: classpath:mapper/**/*.xml
 
 eureka:
@@ -37,9 +37,9 @@ spring:
   profiles: dev
   datasource:
     driverClass: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/cqjj?serverTimezone=UTC&noAccessToProcedureBodies=true&useUnicode=true&zeroDateTimeBehavior=convertToNull&characterEncoding=utf8
+    url: jdbc:mysql://127.0.0.1:3306/cqjj_hscs?serverTimezone=UTC&noAccessToProcedureBodies=true&useUnicode=true&zeroDateTimeBehavior=convertToNull&characterEncoding=utf8
     username: root
     password: root
 
 server:
-  port: 8000
+  port: 8002

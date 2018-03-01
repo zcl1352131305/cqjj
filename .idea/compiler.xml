@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="cqjj-trade" />
         <module name="eureka-server" />
         <module name="sys-admin" />
         <module name="sys-api" />
@@ -17,6 +18,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="cqjj" target="1.7" />
+      <module name="cqjj-trade" target="1.7" />
       <module name="spring-cloud" target="1.7" />
       <module name="sys-admin" target="1.7" />
       <module name="sys-api" target="1.7" />

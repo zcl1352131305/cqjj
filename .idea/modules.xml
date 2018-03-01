@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/cqjj.iml" filepath="$PROJECT_DIR$/cqjj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cqjj-trade/cqjj-trade.iml" filepath="$PROJECT_DIR$/cqjj-trade/cqjj-trade.iml" />
       <module fileurl="file://$PROJECT_DIR$/sys-admin/sys-admin.iml" filepath="$PROJECT_DIR$/sys-admin/sys-admin.iml" />
       <module fileurl="file://$PROJECT_DIR$/sys-api/sys-api.iml" filepath="$PROJECT_DIR$/sys-api/sys-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/sys-auth/sys-auth.iml" filepath="$PROJECT_DIR$/sys-auth/sys-auth.iml" />
