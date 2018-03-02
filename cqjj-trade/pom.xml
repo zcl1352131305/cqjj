@@ -21,6 +21,8 @@
 		<mybatis.version>3.3.1</mybatis.version>
 		<mybatis.spring.version>1.2.4</mybatis.spring.version>
 		<pagehelper.version>4.1.1</pagehelper.version>
+
+		<weixin-java-mp.version>2.9.0</weixin-java-mp.version>
 	</properties>
 
 	<dependencies>
@@ -133,6 +135,12 @@
 			<artifactId>happy-dns-java</artifactId>
 			<version>0.1.4</version>
 			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.binarywang</groupId>
+			<artifactId>weixin-java-mp</artifactId>
+			<version>${weixin-java-mp.version}</version>
 		</dependency>
 	</dependencies>
 
