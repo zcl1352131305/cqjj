@@ -1,7 +1,7 @@
 package cn.zoucl.cloud.trade.handler;
 
-import cn.com.softvan.model.wechat.WechatUserInfo;
-import cn.com.softvan.service.wechat.IWechatUserInfoService;
+import cn.zoucl.cloud.trade.model.entity.WechatUser;
+import cn.zoucl.cloud.trade.service.WechatUserService;
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.common.exception.WxErrorException;
 import me.chanjar.weixin.common.session.WxSessionManager;
@@ -26,18 +26,21 @@ import java.util.Map;
 public class UnSubscribeEventHandler implements WxMpMessageHandler {
 
     @Autowired
-    private IWechatUserInfoService wechatUserInfoService;
+    private WechatUserService wechatUserService;
     @Override
     public WxMpXmlOutMessage handle(WxMpXmlMessage wxMessage, Map<String, Object> context, WxMpService wxMpService, WxSessionManager sessionManager) throws WxErrorException {
         log.debug("收到取消订阅事件推送");
-        WechatUserInfo wechatUserInfo = wechatUserInfoService.selectByOpenId(wxMessage.getFromUser());
-        if(wechatUserInfo != null){
+        WechatUser wechatUser = new WechatUser();
+        wechatUser.setOpenId(wxMessage.getFromUser());
+        wechatUser = wechatUserService.selectOne(wechatUser);
+
+        if(wechatUser != null){
             //更新用户订阅状态
-            WechatUserInfo updateWechatUserInfo = new WechatUserInfo();
-            updateWechatUserInfo.setSubscribe("0");
-            updateWechatUserInfo.setId(wechatUserInfo.getId());
+            WechatUser updateWechatUser = new WechatUser();
+            updateWechatUser.setSubscribe("0");
+            updateWechatUser.setId(wechatUser.getId());
             try {
-                wechatUserInfoService.update(updateWechatUserInfo);
+                wechatUserService.updateSelectiveById(updateWechatUser);
             } catch (Exception e) {
                 e.printStackTrace();
             }

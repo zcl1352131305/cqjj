@@ -57,34 +57,6 @@ public class WechatApiController {
 
 
     /**
-     * 微信接口校验服务号
-     *
-     * @param signature
-     * @param timestamp
-     * @param nonce
-     * @param echostr
-     * @return
-     */
-    @GetMapping(produces = "text/plain;charset=utf-8")
-    @RequestMapping(value = "/fwh", method = {RequestMethod.GET, RequestMethod.POST})
-    public String authCheckfwh(String signature, String timestamp,
-                            String nonce, String echostr) {
-
-        log.info("收到来自微信的认证信息:[{}, {}, {}, {}] ", signature, timestamp, nonce, echostr);
-        if (StringUtils.isAnyBlank(signature, timestamp, nonce, echostr)) {
-            return "error";
-        }
-
-
-
-        if (wxService.checkSignature(timestamp, nonce, signature)) {
-            //校验成功将该值返回
-            return echostr;
-        }
-        return "error";
-    }
-
-    /**
      * 微信请求处理
      * 处理来自微信的所有事件消息推送
      * @param requestBody
@@ -96,20 +68,20 @@ public class WechatApiController {
      * @return
      */
     @PostMapping(produces = "application/xml; charset=UTF-8")
-    public String msg(@RequestBody String requestBody,
-                      @RequestParam("signature") String signature,
-                      @RequestParam("timestamp") String timestamp,
-                      @RequestParam("nonce") String nonce,
-                      @RequestParam(name = "encrypt_type",
-                              required = false) String encType,
-                      @RequestParam(name = "msg_signature",
-                              required = false) String msgSignature) {
-
-        log.info("\n接收微信请求：[signature=[{}], encType=[{}], msgSignature=[{}],"
+    public String post(@RequestBody String requestBody,
+                       @RequestParam("signature") String signature,
+                       @RequestParam("timestamp") String timestamp,
+                       @RequestParam("nonce") String nonce,
+                       @RequestParam(name = "encrypt_type",
+                               required = false) String encType,
+                       @RequestParam(name = "msg_signature",
+                               required = false) String msgSignature) {
+        log.info(
+                "\n接收微信请求：[signature=[{}], encType=[{}], msgSignature=[{}],"
                         + " timestamp=[{}], nonce=[{}], requestBody=[\n{}\n] ",
                 signature, encType, msgSignature, timestamp, nonce, requestBody);
 
-        if (!wxService.checkSignature(timestamp, nonce, signature)) {
+        if (!this.wxService.checkSignature(timestamp, nonce, signature)) {
             throw new IllegalArgumentException("非法请求，可能属于伪造的请求！");
         }
 
@@ -117,7 +89,7 @@ public class WechatApiController {
         if (encType == null) {
             // 明文传输的消息
             WxMpXmlMessage inMessage = WxMpXmlMessage.fromXml(requestBody);
-            WxMpXmlOutMessage outMessage = route(inMessage);
+            WxMpXmlOutMessage outMessage = this.route(inMessage);
             if (outMessage == null) {
                 return "";
             }
@@ -129,7 +101,7 @@ public class WechatApiController {
                     requestBody, this.wxService.getWxMpConfigStorage(), timestamp,
                     nonce, msgSignature);
             log.debug("\n消息解密后内容为：\n{} ", inMessage.toString());
-            WxMpXmlOutMessage outMessage = route(inMessage);
+            WxMpXmlOutMessage outMessage = this.route(inMessage);
             if (outMessage == null) {
                 return "";
             }
@@ -137,7 +109,9 @@ public class WechatApiController {
             out = outMessage
                     .toEncryptedXml(this.wxService.getWxMpConfigStorage());
         }
-        log.debug("\n回复消息:{}", out);
+
+        log.debug("\n组装回复信息：{}", out);
+
         return out;
     }
 

@@ -57,8 +57,7 @@ public class WechatConfiguration {
         //查询公众号信息
         WechatPublicPlatform wechatPublicPlatform = new WechatPublicPlatform();
         wechatPublicPlatform.setIsActive("1");
-        List<WechatPublicPlatform> wechatPublicPlatforms = wechatPublicPlatformService
-                .selectList(wechatPublicPlatform);
+        List<WechatPublicPlatform> wechatPublicPlatforms = wechatPublicPlatformService.selectList(wechatPublicPlatform);
         if(wechatPublicPlatforms != null && !wechatPublicPlatforms.isEmpty()){
             wechatPublicPlatform = wechatPublicPlatforms.get(0);
             configStorage.setAppId(wechatPublicPlatform.getAppId()); // 设置微信公众号的appid
@@ -70,15 +69,15 @@ public class WechatConfiguration {
     }
 
     @Bean(name="wxService")
-    public WxMpService wxServiceDYH(WxMpConfigStorage configStorageDYH) {
+    public WxMpService wxService(WxMpConfigStorage configStorageDYH) {
         WxMpService wxMpService = new WxMpServiceImpl();
         wxMpService.setWxMpConfigStorage(configStorageDYH);
         return wxMpService;
     }
 
     @Bean(name="router")
-    public WxMpMessageRouter routerDYH(WxMpService wxServiceDYH) {
-        final WxMpMessageRouter newRouter = new WxMpMessageRouter(wxServiceDYH);
+    public WxMpMessageRouter router(WxMpService wxServive) {
+        final WxMpMessageRouter newRouter = new WxMpMessageRouter(wxServive);
         // 点击菜单连接事件
         newRouter.rule().async(false).msgType(WxConsts.XmlMsgType.EVENT)
                 .event(WxConsts.MenuButtonType.VIEW).handler(nullHandler).end();

@@ -59,7 +59,7 @@ public class ElementServiceImpl extends BaseServiceImpl<ElementMapper,Element> i
             BeanUtils.copyProperties(e,vo);
             ignorePermissions.add(vo);
         }
-        element.setMenuId("0");
+        element.setMenuId("-2");
         elements = selectList(element);
         List<PermissionVo> defaultPermissions = new ArrayList<>();
         for (Element e:elements) {

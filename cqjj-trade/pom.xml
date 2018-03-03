@@ -22,10 +22,21 @@
 		<mybatis.spring.version>1.2.4</mybatis.spring.version>
 		<pagehelper.version>4.1.1</pagehelper.version>
 
-		<weixin-java-mp.version>2.9.0</weixin-java-mp.version>
 	</properties>
 
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/com.thoughtworks.xstream/xstream -->
+		<dependency>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.4.9</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.binarywang</groupId>
+			<artifactId>weixin-java-mp</artifactId>
+			<version>2.9.0</version>
+		</dependency>
 		<!-- 公共依赖 -->
 		<dependency>
 			<groupId>cn.zoucl.cloud</groupId>
@@ -61,7 +72,7 @@
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-redis -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-redis</artifactId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
 		</dependency>
 
 		<dependency>
@@ -112,36 +123,8 @@
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.qiniu</groupId>
-			<artifactId>qiniu-java-sdk</artifactId>
-			<version>7.2.6</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.squareup.okhttp3</groupId>
-			<artifactId>okhttp</artifactId>
-			<version>3.3.1</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-			<version>2.6.2</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.qiniu</groupId>
-			<artifactId>happy-dns-java</artifactId>
-			<version>0.1.4</version>
-			<scope>compile</scope>
-		</dependency>
 
-		<dependency>
-			<groupId>com.github.binarywang</groupId>
-			<artifactId>weixin-java-mp</artifactId>
-			<version>${weixin-java-mp.version}</version>
-		</dependency>
+
 	</dependencies>
 
 	<build>
