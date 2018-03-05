@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zoucl.cloud.trade.mapper.WechatMenuMapper">
+  <resultMap id="BaseResultMap" type="cn.zoucl.cloud.trade.model.entity.WechatMenu">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="keyword" jdbcType="VARCHAR" property="keyword" />
+    <result column="media_id" jdbcType="VARCHAR" property="mediaId" />
+    <result column="appid" jdbcType="VARCHAR" property="appid" />
+    <result column="pagepath" jdbcType="VARCHAR" property="pagepath" />
+    <result column="parent" jdbcType="VARCHAR" property="parent" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+
+    <result column="date_created" jdbcType="DATE" property="dateCreated" />
+    <result column="create_id" jdbcType="VARCHAR" property="createId" />
+    <result column="create_ip" jdbcType="VARCHAR" property="createIp" />
+    <result column="date_updated" jdbcType="DATE" property="dateUpdated" />
+    <result column="update_id" jdbcType="VARCHAR" property="updateId" />
+    <result column="update_ip" jdbcType="VARCHAR" property="updateIp" />
+    <result column="version" jdbcType="VARCHAR" property="version" />
+    <result column="del_flag" jdbcType="VARCHAR" property="delFlag" />
+
+  </resultMap>
+
+
+</mapper>

@@ -41,13 +41,14 @@ public class SubscribeEventHandler implements WxMpMessageHandler {
         //保存用户信息
         WechatUser wechatUser = WechatUser.getFromWxMpUser(wxMpUser);
         try {
-            wechatUser = wechatUserService.selectOne(wechatUser);
-            if(null != wechatUser){
-                wechatUser.setSubscribe("1");
-                wechatUserService.updateSelectiveById(wechatUser);
+            WechatUser wechatUser1 = selectByOpenId(wechatUser.getOpenId());
+            if(null != wechatUser1){
+                wechatUser1.setSubscribe("1");
+                wechatUserService.updateSelectiveById(wechatUser1);
             }
             else{
                 wechatUser.setId(IdUtil.createUUID(32));
+                wechatUser.setSubscribe("1");
                 wechatUserService.insertSelective(wechatUser);
             }
         } catch (Exception e) {
@@ -60,5 +61,11 @@ public class SubscribeEventHandler implements WxMpMessageHandler {
                 .fromUser(wxMessage.getToUser())
                 .toUser(wxMessage.getFromUser())
                 .build();
+    }
+
+    private WechatUser selectByOpenId(String openId){
+        WechatUser wechatUser = new WechatUser();
+        wechatUser.setOpenId(openId);
+        return wechatUserService.selectOne(wechatUser);
     }
 }
