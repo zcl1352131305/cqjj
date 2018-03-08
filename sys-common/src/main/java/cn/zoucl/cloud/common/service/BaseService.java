@@ -102,12 +102,12 @@ public interface BaseService<T> {
      * @param query
      * @return
      */
-    public Result selectPageByQuery(Query query);
+    Result selectPageByQuery(Query query);
 
     /**
      * 列表查询带参数
      * @param query
      * @return
      */
-    public Result selectListByQuery(Map<String,Object> query);
+    Result selectListByQuery(Map<String,Object> query);
 }

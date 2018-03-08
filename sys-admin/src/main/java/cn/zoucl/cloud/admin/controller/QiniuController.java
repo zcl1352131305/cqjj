@@ -8,6 +8,7 @@ import cn.zoucl.cloud.common.controller.BaseController;
 import cn.zoucl.cloud.common.utils.Result;
 import cn.zoucl.cloud.common.utils.ResultCode;
 import cn.zoucl.cloud.common.utils.Validator;
+import com.qiniu.http.Client;
 import com.qiniu.util.Auth;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
@@ -43,5 +44,6 @@ public class QiniuController {
         rs = Result.success("成功",upToken);
         return rs;
     }
+
 
 }

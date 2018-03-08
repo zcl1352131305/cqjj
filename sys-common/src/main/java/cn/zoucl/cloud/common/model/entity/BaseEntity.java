@@ -4,13 +4,14 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Administrator on 2017/11/30 0030.
  */
 @Data
-public class BaseEntity {
+public class BaseEntity implements Serializable {
 
     @Id
     private String id;

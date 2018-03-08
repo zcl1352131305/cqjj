@@ -43,7 +43,7 @@ public class GroupController extends BaseController<GroupService,Group> {
             rs = Result.success(users);
         }
         else{
-            rs = Result.fail();
+            rs = Result.success();
         }
         return rs;
     }
@@ -53,10 +53,10 @@ public class GroupController extends BaseController<GroupService,Group> {
         Result rs = null;
         List<GroupUser> users = baseService.groupMember(params);
         if(null != users && users.size() > 0){
-            rs = Result.success(users);
+
         }
         else{
-            rs = Result.fail();
+            rs = Result.success();
         }
         return rs;
     }

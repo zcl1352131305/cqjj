@@ -1,6 +1,7 @@
 package cn.zoucl.cloud.trade.controller.wechat;
 
 import cn.zoucl.cloud.common.utils.Result;
+import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.common.bean.WxJsapiSignature;
 import me.chanjar.weixin.common.exception.WxErrorException;
@@ -138,7 +139,10 @@ public class WechatApiController {
         try {
             WxJsapiSignature signature = wxService.createJsapiSignature(url);
             //WxJsapiSignature signature = wxServiceDYH.createJsapiSignature(url);
-            return Result.success("获取成功！",signature);
+            JSONObject json = new JSONObject();
+            json.put("signature",signature);
+            json.put("accessToken",wxService.getAccessToken());
+            return Result.success("获取成功！",json);
         } catch (WxErrorException e) {
             e.printStackTrace();
             return Result.fail("获取失败");
