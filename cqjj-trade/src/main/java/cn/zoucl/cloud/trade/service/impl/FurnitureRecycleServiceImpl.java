@@ -15,15 +15,15 @@ public class FurnitureRecycleServiceImpl extends BaseServiceImpl<FurnitureRecycl
         if(Validator.isEmpty(entity.getId())) {
             entity.setId(IdUtil.createUUID(32));
         }
-        else{
-            FurnitureRecycle recycle1 = super.selectById(entity.getId());
-            if(null != recycle1){
-                updateSelectiveById(entity);
-            }
-            else{
-                insertSelective(entity);
-            }
+
+        FurnitureRecycle recycle1 = super.selectById(entity.getId());
+        if(null != recycle1){
+            updateSelectiveById(entity);
         }
+        else{
+            insertSelective(entity);
+        }
+
 
         //保存图片
         if(null != entity.getFnImgs() && entity.getFnImgs().size() > 0){

@@ -1,10 +1,8 @@
-package cn.zoucl.cloud.auth.feign;
+package cn.zoucl.cloud.trade.feign;
 
-import cn.zoucl.cloud.api.model.vo.PermissionVo;
 import cn.zoucl.cloud.api.model.vo.UserVo;
-import cn.zoucl.cloud.auth.feign.hystrix.AdminFeignHystrix;
 import cn.zoucl.cloud.common.utils.Result;
-import feign.Param;
+import cn.zoucl.cloud.trade.feign.hystrix.AdminFeignHystrix;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,9 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface IAdminFeign {
     @RequestMapping(value = "/user/validate", method = RequestMethod.POST)
     Result<UserVo> validate(@RequestParam("username") String username, @RequestParam("password") String password);
-
-    @RequestMapping(value = "/user/getVo/{id}", method = RequestMethod.GET)
-    Result<UserVo> getVo(@PathVariable("id") String id);
 
 /*
     @RequestMapping(value = "/element/permissions/{userId}", method = RequestMethod.POST)

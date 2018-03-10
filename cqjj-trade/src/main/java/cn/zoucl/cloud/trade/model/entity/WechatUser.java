@@ -50,6 +50,9 @@ public class WechatUser extends BaseEntity {
 	@Column(name = "group_id")
 	private String groupId;
 
+	@Column(name = "merchant_admin_id")
+	private String merchantAdminId;
+
 	public static WechatUser getFromWxMpUser(WxMpUser wxMpUser){
 		WechatUser wechatUserInfo = new WechatUser();
 		wechatUserInfo.setOpenId(wxMpUser.getOpenId());

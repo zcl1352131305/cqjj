@@ -7,10 +7,7 @@ import cn.zoucl.cloud.auth.service.AuthService;
 import cn.zoucl.cloud.common.utils.Result;
 import cn.zoucl.cloud.common.utils.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -40,6 +37,27 @@ public class AuthController {
             }
             else{
                 return authService.login(user.getUsername(),user.getPassword());
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.fail("系统错误！");
+        }
+    }
+
+    /**
+     * 登陆接口
+     * @return 返回用户信息以及token
+     */
+    @PostMapping("wechatLogin/{id}")
+    public Result wechatLogin(@PathVariable String id){
+        try {
+            if(Validator.isEmpty(id)){
+                return Result.fail("id不能为空！");
+            }
+            else{
+                return authService.wechatLogin(id);
             }
 
 

@@ -10,10 +10,7 @@ import cn.zoucl.cloud.common.utils.Result;
 import cn.zoucl.cloud.common.utils.ResultCode;
 import cn.zoucl.cloud.common.utils.Validator;
 import org.springframework.beans.BeanUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by Administrator on 2017/11/28 0028.
@@ -44,7 +41,7 @@ public class UserController extends BaseController<UserService,User> {
                 if(user.getPassword().equals(password)){
                     UserVo userVo = new UserVo();
                     BeanUtils.copyProperties(user,userVo);
-                    rs = new Result(ResultCode.SUCCESS,"成功！",userVo);
+                    //rs = new Result(ResultCode.SUCCESS,"成功！",userVo);
                     rs = Result.success(userVo);
                 }
                 else{
@@ -57,6 +54,28 @@ public class UserController extends BaseController<UserService,User> {
         }
         return rs;
     }
+    @GetMapping("/getVo/{id}")
+    public Result validate(@PathVariable String id){
+        Result rs = null;
+        if(Validator.isEmpty(id)){
+            rs = Result.fail("id不能为空！");
+        }
+        else{
+            User user = baseService.selectById(id);
+            if(null != user){
+                UserVo userVo = new UserVo();
+                BeanUtils.copyProperties(user,userVo);
+                //rs = new Result(ResultCode.SUCCESS,"成功！",userVo);
+                rs = Result.success(userVo);
+            }
+            else{
+                rs = Result.fail("用户不存在！");
+            }
+        }
+        return rs;
+    }
+
+
 
     /**
      * 获取登录用户信息

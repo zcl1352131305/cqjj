@@ -17,7 +17,9 @@ public interface AuthService {
      * @return
      * @throws Exception
      */
-    public Result login(String username, String password) throws Exception;
+    Result login(String username, String password) throws Exception;
+
+    Result wechatLogin(String id) throws Exception;
 
     /**
      * token校验

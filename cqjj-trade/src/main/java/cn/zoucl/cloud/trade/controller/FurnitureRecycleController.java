@@ -18,6 +18,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/furnitureRecycle")
 public class FurnitureRecycleController extends BaseController<FurnitureRecycleService,FurnitureRecycle> {
 
+    /**
+     * 保存或更新家具回收
+     * @param entity
+     * @return
+     */
     @PostMapping("/saveOrUpdate")
     public Result saveOrUpdate(@RequestBody FurnitureRecycle entity){
         if(null != entity){

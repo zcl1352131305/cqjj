@@ -1,9 +1,7 @@
-package cn.zoucl.cloud.auth.feign.hystrix;
+package cn.zoucl.cloud.trade.feign.hystrix;
 
-import cn.zoucl.cloud.api.model.vo.PermissionVo;
-import cn.zoucl.cloud.api.model.vo.UserVo;
-import cn.zoucl.cloud.auth.feign.IAdminFeign;
 import cn.zoucl.cloud.common.utils.Result;
+import cn.zoucl.cloud.trade.feign.IAuthFeign;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,15 +9,10 @@ import org.springframework.stereotype.Component;
  * 断路器，当请求sys-admin超时时执行
  */
 @Component
-public class AdminFeignHystrix implements IAdminFeign {
+public class AuthFeignHystrix implements IAuthFeign {
     @Override
-    public Result validate(String username, String password) {
+    public Result wechatValidate(String id) {
         return Result.fail("连接服务失败！");
-    }
-
-    @Override
-    public Result<UserVo> getVo(String id) {
-        return Result.fail("链接服务失败！");
     }
 
    /* @Override

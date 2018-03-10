@@ -30,24 +30,28 @@ public class AuthServiceImpl implements AuthService {
      * @throws Exception
      */
     public Result login(String username, String password) throws Exception{
-        Result<UserVo> obj = adminFeign.validate(username,password);
-        Result rs = null;
+        return authToken(adminFeign.validate(username,password), false);
+    }
+
+    public Result wechatLogin(String id) throws Exception{
+        return authToken(adminFeign.getVo(id), true);
+    }
+
+    private Result authToken(Result<UserVo> obj, boolean isNeedPwd) throws Exception{
         if(obj.getCode().equals("0")){
             UserVo vo = (UserVo) obj.getResult();
-
             String token = JWTHelper.generateToken(vo,7200);
             JSONObject json = new JSONObject();
             json.put("token",token);
-            vo.setPassword(null);
+            if(!isNeedPwd){
+                vo.setPassword(null);
+            }
             json.put("userInfo",vo);
-            rs = Result.success(json);
+            return Result.success(json);
         }
         else{
-            rs = Result.fail(obj.getMessage());
+            return Result.fail(obj.getMessage());
         }
-
-        return rs;
-
     }
 
 

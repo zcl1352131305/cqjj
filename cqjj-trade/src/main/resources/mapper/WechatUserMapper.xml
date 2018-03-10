@@ -19,6 +19,7 @@
     <result column="subscribe" jdbcType="VARCHAR" property="subscribe" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="group_id" jdbcType="VARCHAR" property="groupId" />
+    <result column="merchant_admin_id" jdbcType="VARCHAR" property="merchantAdminId" />
 
     <result column="date_created" jdbcType="DATE" property="dateCreated" />
     <result column="create_id" jdbcType="VARCHAR" property="createId" />

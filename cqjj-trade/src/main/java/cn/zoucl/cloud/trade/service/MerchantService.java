@@ -8,4 +8,9 @@ import cn.zoucl.cloud.trade.model.entity.Merchant;
  */
 public interface MerchantService extends BaseService<Merchant> {
 
+    /**
+     * 保存或更新商户信息
+     * @param entity
+     */
+    void saveOrUpdate(Merchant entity);
 }

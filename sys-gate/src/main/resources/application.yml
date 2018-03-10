@@ -30,8 +30,8 @@ zuul:
       path: /sysAuth/**
       service-id: sys-auth
     cqjj-trade:
-          path: /cqjjTrade/**
-          service-id: cqjj-trade
+      path: /cqjjTrade/**
+      service-id: cqjj-trade
 
 
 ribbon:
