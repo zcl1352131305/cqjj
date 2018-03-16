@@ -112,7 +112,7 @@ public class UserController extends BaseController<UserService,User> {
     }
 
     /**
-     * 商户注册
+     * 注册
      * @return
      */
     @PostMapping("/regist")
@@ -162,7 +162,7 @@ public class UserController extends BaseController<UserService,User> {
     }
 
     /**
-     * 商户找回密码
+     * 找回密码
      * @param map
      * @return
      */
@@ -196,6 +196,56 @@ public class UserController extends BaseController<UserService,User> {
                 else{
                     return Result.fail("该手机号未注册！");
                 }
+            }
+
+        }
+
+    }
+
+    /**
+     * 修改手机号
+     * @param map
+     * @return
+     */
+    @PutMapping("/updUsername")
+    public Result updUsername(@RequestBody Map<String,String> map){
+
+        if(Validator.isEmpty(map.get("id"))){
+            return Result.fail("id为空！");
+        }
+        if(Validator.isEmpty(map.get("username"))){
+            return Result.fail("手机号为空！");
+        }
+        else if(Validator.isEmpty(map.get("validateCode"))){
+            return Result.fail("验证码为空！");
+        }
+        else{
+            String code = (String) redisService.get("validateCode_"+map.get("username"));
+            if(null == code || !code.equals(map.get("validateCode"))){
+                return Result.fail("验证码不正确！");
+            }
+            else{
+                redisService.remove("validateCode_"+map.get("username"));
+
+                User user = baseService.selectByUsername(map.get("username"));
+                if(null != user){
+                    return Result.fail("手机号已注册！");
+                }
+                else{
+                    user = baseService.selectById(map.get("id"));
+                    if(null != user){
+                        user.setUsername(map.get("username"));
+                        user.setName(map.get("username"));
+                        baseService.updateSelectiveById(user);
+                        redisService.remove(map.get("wechatUserId"));
+                        return Result.success();
+                    }
+                    else{
+                        return Result.fail("该手机号未注册！");
+                    }
+                }
+
+
             }
 
         }

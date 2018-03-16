@@ -115,11 +115,49 @@ public class MerchantController extends BaseController<MerchantService,Merchant>
         }
     }
 
+    /**
+     * 保存或修改商户
+     * @param entity
+     * @return
+     */
     @PostMapping("/saveOrUpdate")
     public Result saveOrUpdate(@RequestBody Merchant entity){
         if(null != entity){
             baseService.saveOrUpdate(entity);
             return Result.success("成功!");
+        }
+        else{
+            return Result.fail();
+        }
+    }
+
+    /**
+     * 解除绑定
+     * @param id
+     * @return
+     */
+    @DeleteMapping("/unBinding/{id}")
+    public Result unBinding(@PathVariable String id){
+        if(Validator.notEmpty(id)){
+            WechatUser user = wechatUserService.selectById(id);
+            if(null != user){
+
+                //删除商户认证信息
+                /*Merchant merchant = new Merchant();
+                merchant.setSysUserId(user.getMerchantAdminId());
+                baseService.delete(merchant);*/
+
+                //删除微信中的绑定账户id
+                user.setMerchantAdminId("");
+                wechatUserService.updateById(user);
+
+                redisService.remove(id);
+                return Result.success("成功!");
+            }
+            else{
+                return Result.fail("id为空");
+            }
+
         }
         else{
             return Result.fail();
