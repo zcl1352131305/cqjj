@@ -43,6 +43,8 @@ public class FurnitureSale extends BaseEntity {
 
     private String keyword3;
 
+    @Column(name = "is_show")
+    private String isShow;
 
     @Transient
     private List<FurnitureSaleImg> fnImgs;

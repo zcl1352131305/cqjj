@@ -47,5 +47,11 @@ public class FurnitureSaleServiceImpl extends BaseServiceImpl<FurnitureSaleMappe
         return sale;
     }
 
+    @Override
+    public int deleteById(Object id) {
+        mapper.deleteFnImgBySaleId((String)id);
+        return mapper.deleteByPrimaryKey(id);
+    }
+
 
 }

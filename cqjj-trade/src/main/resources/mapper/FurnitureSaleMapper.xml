@@ -17,6 +17,7 @@
     <result column="keyword1" jdbcType="VARCHAR" property="keyword1" />
     <result column="keyword2" jdbcType="VARCHAR" property="keyword2" />
     <result column="keyword3" jdbcType="VARCHAR" property="keyword3" />
+    <result column="is_show" jdbcType="VARCHAR" property="isShow" />
 
 
     <result column="date_created" jdbcType="DATE" property="dateCreated" />
