@@ -5,6 +5,8 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/11/28 0028.
@@ -47,6 +49,9 @@ public class Merchant extends BaseEntity {
     @Column(name = "last_login")
     private String lastLogin;
 
+
+    @Transient
+    private List<MerchantBusinessScope> businessScopes;
 
 
 }

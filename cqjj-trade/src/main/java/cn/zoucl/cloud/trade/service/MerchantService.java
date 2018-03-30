@@ -13,4 +13,11 @@ public interface MerchantService extends BaseService<Merchant> {
      * @param entity
      */
     void saveOrUpdate(Merchant entity);
+
+    /**
+     * 根据后台账户id查询
+     * @param id
+     * @return
+     */
+    Merchant selectByAdminId(String id);
 }

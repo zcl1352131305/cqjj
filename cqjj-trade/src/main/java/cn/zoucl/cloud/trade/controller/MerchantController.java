@@ -109,9 +109,7 @@ public class MerchantController extends BaseController<MerchantService,Merchant>
             return Result.fail("id为空！");
         }
         else{
-            Merchant m = new Merchant();
-            m.setSysUserId(adminId);
-            return Result.success(baseService.selectOne(m));
+            return Result.success(baseService.selectByAdminId(adminId));
         }
     }
 

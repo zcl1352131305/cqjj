@@ -1,27 +1,27 @@
 package cn.zoucl.cloud.trade.service.impl;
 
 import cn.zoucl.cloud.common.service.impl.BaseServiceImpl;
-import cn.zoucl.cloud.common.utils.DateUtil;
 import cn.zoucl.cloud.common.utils.IdUtil;
 import cn.zoucl.cloud.common.utils.Validator;
-import cn.zoucl.cloud.trade.mapper.FurnitureRecycleMapper;
-import cn.zoucl.cloud.trade.model.entity.FurnitureRecycle;
-import cn.zoucl.cloud.trade.service.FurnitureRecycleService;
+import cn.zoucl.cloud.trade.mapper.FurnitureSaleMapper;
+import cn.zoucl.cloud.trade.model.entity.FurnitureSale;
+import cn.zoucl.cloud.trade.service.FurnitureSaleService;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
 @Service
-public class FurnitureRecycleServiceImpl extends BaseServiceImpl<FurnitureRecycleMapper, FurnitureRecycle> implements FurnitureRecycleService {
+public class FurnitureSaleServiceImpl extends BaseServiceImpl<FurnitureSaleMapper, FurnitureSale> implements FurnitureSaleService {
 
-    public String saveOrUpdate(FurnitureRecycle entity){
+    @Override
+    public String saveOrUpdate(FurnitureSale entity) {
         if(Validator.isEmpty(entity.getId())) {
             entity.setId(IdUtil.createUUID(32));
         }
         entity.setDateUpdated(new Date());
 
-        FurnitureRecycle recycle1 = super.selectById(entity.getId());
-        if(null != recycle1){
+        FurnitureSale sale = super.selectById(entity.getId());
+        if(null != sale){
             updateSelectiveById(entity);
         }
         else{
@@ -32,19 +32,20 @@ public class FurnitureRecycleServiceImpl extends BaseServiceImpl<FurnitureRecycl
 
         //保存图片
         if(null != entity.getFnImgs() && entity.getFnImgs().size() > 0){
-            mapper.deleteFnImgByRecycleId(entity.getId());
+            mapper.deleteFnImgBySaleId(entity.getId());
             mapper.insertFnImgBatch(entity.getFnImgs());
         }
         return entity.getId();
     }
 
     @Override
-    public FurnitureRecycle selectById(Object id) {
-        FurnitureRecycle recycle = super.selectById(id);
-        if(null != recycle){
-            recycle.setFnImgs(mapper.selectRecyleImgs((String) id));
+    public FurnitureSale selectById(Object id) {
+        FurnitureSale sale = super.selectById(id);
+        if(null != sale){
+            sale.setFnImgs(mapper.selectSaleImgs((String) id));
         }
-        return recycle;
+        return sale;
     }
+
 
 }

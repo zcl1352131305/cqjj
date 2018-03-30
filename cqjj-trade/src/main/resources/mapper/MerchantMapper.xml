@@ -33,7 +33,35 @@
 
   </resultMap>
 
+  <select id="selectBySysUserId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from t_merchant where sys_user_id = #{sysUserId}
+  </select>
 
+
+
+  <resultMap id="businessScopeResultMap" type="cn.zoucl.cloud.trade.model.entity.MerchantBusinessScope">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="type_id" jdbcType="VARCHAR" property="typeId" />
+    <result column="merchant_id" jdbcType="VARCHAR" property="merchantId" />
+    <result column="type_name" jdbcType="VARCHAR" property="typeName" />
+  </resultMap>
+
+  <select id="selectBusinessScopes" parameterType="java.lang.String" resultMap="businessScopeResultMap">
+    select t1.*, t2.name as type_name from t_merchant_business_scope t1
+    left join t_furniture_type t2 on t1.type_id = t2.id
+    where t1.merchant_id = #{merchantId}
+  </select>
+
+  <delete id="deleteBusinessScopes"  parameterType="java.lang.String" >
+    delete from t_merchant_business_scope where merchant_id = #{merchantId}
+  </delete>
+
+  <insert id="insertBusinessScopes" parameterType="java.util.List">
+    INSERT INTO t_merchant_business_scope(id, merchant_id, type_id) values
+    <foreach collection="list" item="item" index="index"  separator=",">
+      (#{item.id},#{item.merchantId},#{item.typeId})
+    </foreach>
+  </insert>
 
 
 </mapper>

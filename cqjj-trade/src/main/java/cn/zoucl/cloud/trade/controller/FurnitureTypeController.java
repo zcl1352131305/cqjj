@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 商户接口
+ * 家具类型接口
  * Created by Administrator on 2017/11/28 0028.
  */
 @RestController

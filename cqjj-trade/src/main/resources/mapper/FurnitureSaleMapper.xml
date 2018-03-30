@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zoucl.cloud.trade.mapper.FurnitureSaleMapper">
+  <resultMap id="BaseResultMap" type="cn.zoucl.cloud.trade.model.entity.FurnitureSale">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="fn_name" jdbcType="VARCHAR" property="fnName" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="type_id" jdbcType="VARCHAR" property="typeId" />
+    <result column="price" jdbcType="VARCHAR" property="price" />
+    <result column="detail_info" jdbcType="VARCHAR" property="detailInfo" />
+    <result column="head_img" jdbcType="VARCHAR" property="headImg" />
+    <result column="is_new" jdbcType="VARCHAR" property="is_new" />
+    <result column="keyword1" jdbcType="VARCHAR" property="keyword1" />
+    <result column="keyword2" jdbcType="VARCHAR" property="keyword2" />
+    <result column="keyword3" jdbcType="VARCHAR" property="keyword3" />
+
+
+    <result column="date_created" jdbcType="DATE" property="dateCreated" />
+    <result column="create_id" jdbcType="VARCHAR" property="createId" />
+    <result column="create_ip" jdbcType="VARCHAR" property="createIp" />
+    <result column="date_updated" jdbcType="DATE" property="dateUpdated" />
+    <result column="update_id" jdbcType="VARCHAR" property="updateId" />
+    <result column="update_ip" jdbcType="VARCHAR" property="updateIp" />
+    <result column="version" jdbcType="VARCHAR" property="version" />
+    <result column="del_flag" jdbcType="VARCHAR" property="delFlag" />
+
+  </resultMap>
+
+  <resultMap id="ImgResultMap" type="cn.zoucl.cloud.trade.model.entity.FurnitureSaleImg">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="sale_id" jdbcType="VARCHAR" property="saleId" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+  </resultMap>
+
+  <select id="selectSaleImgs" parameterType="java.lang.String" resultMap="ImgResultMap">
+    select * from t_furniture_sale_img where sale_id = #{recycleId}
+  </select>
+
+  <delete id="deleteFnImgBySaleId"  parameterType="java.lang.String" >
+    delete from t_furniture_sale_img where sale_id = #{recycleId}
+  </delete>
+
+  <insert id="insertFnImgBatch" parameterType="java.util.List">
+    INSERT INTO t_furniture_sale_img(id, sale_id, url) values
+    <foreach collection="list" item="item" index="index"  separator=",">
+      (#{item.id},#{item.saleId},#{item.url})
+    </foreach>
+  </insert>
+
+</mapper>
