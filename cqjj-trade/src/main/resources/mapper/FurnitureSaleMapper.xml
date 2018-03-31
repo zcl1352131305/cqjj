@@ -31,6 +31,45 @@
 
   </resultMap>
 
+
+  <!--  -->
+  <select id="selectFrontPage" parameterType="java.util.Map" resultType="cn.zoucl.cloud.trade.model.vo.FurnitureSaleVo">
+    select
+    t1.id, t1.user_id as userId,
+    t1.title, t1.fn_name as fnName,
+    t1.price, t1.head_img as headImg,
+    t1.is_new as isNew,
+    t2.id as merchantId,
+    t2.merchant_name as merchantName from t_furniture_sale t1
+    LEFT JOIN t_merchant t2 on t1.user_id = t2.sys_user_id
+    where t1.is_show = '1'
+    <if test="searchType != null and searchType != ''">
+      and t1.type_id = #{searchType}
+    </if>
+    <if test="searchIsNew != null and searchIsNew != ''">
+      and t1.is_new = #{searchIsNew}
+    </if>
+    <if test="searchParam != null and searchParam != ''">
+    and (
+        t1.title like CONCAT("%",#{searchParam},"%")
+        or #{searchParam} like CONCAT("%",t1.title,"%")
+
+        or t1.fn_name like CONCAT("%",#{searchParam},"%")
+        or #{searchParam} like  CONCAT("%",t1.fn_name,"%")
+
+        or t1.keyword1 like CONCAT("%",#{searchParam},"%")
+        or #{searchParam} like CONCAT("%",t1.keyword1,"%")
+
+        or t1.keyword2 like CONCAT("%",#{searchParam},"%")
+        or #{searchParam} like  CONCAT("%",t1.keyword2,"%")
+
+        or t1.keyword3 like CONCAT("%",#{searchParam},"%")
+        or #{searchParam} like CONCAT("%",t1.keyword3,"%")
+      )
+    </if>
+  </select>
+
+
   <resultMap id="ImgResultMap" type="cn.zoucl.cloud.trade.model.entity.FurnitureSaleImg">
     <!--
       WARNING - @mbggenerated

@@ -1,6 +1,8 @@
 package cn.zoucl.cloud.trade.service;
 
 import cn.zoucl.cloud.common.service.BaseService;
+import cn.zoucl.cloud.common.utils.Query;
+import cn.zoucl.cloud.common.utils.Result;
 import cn.zoucl.cloud.trade.model.entity.FurnitureSale;
 
 /**
@@ -8,4 +10,6 @@ import cn.zoucl.cloud.trade.model.entity.FurnitureSale;
  */
 public interface FurnitureSaleService extends BaseService<FurnitureSale> {
     String saveOrUpdate(FurnitureSale entity);
+
+    Result selectFrontPage(Query query);
 }

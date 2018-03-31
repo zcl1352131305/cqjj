@@ -43,7 +43,7 @@ public class FurnitureSaleController extends BaseController<FurnitureSaleService
     @GetMapping("/frontPage")
     public Result frontPage(@RequestParam Map<String, Object> params){
         Query query = new Query(params);
-        return baseService.selectPageByQuery(query);
+        return baseService.selectFrontPage(query);
     }
 
 }

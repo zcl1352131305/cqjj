@@ -60,7 +60,7 @@ public class WechatAuthController{
                 if(null != user1){
                     user.setId(user1.getId());
                 }
-                long saveTime = 60;
+                long saveTime = 300;
                 redisService.set(code,user,saveTime);
             }
 
@@ -97,7 +97,7 @@ public class WechatAuthController{
                     user.setId(IdUtil.createUUID(32));
                     wechatUserService.insert(user);
                 }
-                long saveTime = 60;
+                long saveTime = 300;
                 redisService.set(code,user,saveTime);
             }
             rs = Result.success("获取成功！",user);
