@@ -33,6 +33,9 @@ public class FurnitureSaleVo{
 
     private String merchantName;
 
+    // 收藏id
+    private String collectionId;
+
 
 
 }

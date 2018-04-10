@@ -37,6 +37,11 @@ public class FurnitureRecycle extends BaseEntity {
 
     private String address;
 
+    @Column(name = "is_show")
+    private String isShow;
+
+
+
 
     @Transient
     private List<FurnitureRecycleImg> fnImgs;

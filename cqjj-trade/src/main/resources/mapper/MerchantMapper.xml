@@ -38,7 +38,7 @@
   </select>
 
 
-
+  <!-- 商家经营范围 -->
   <resultMap id="businessScopeResultMap" type="cn.zoucl.cloud.trade.model.entity.MerchantBusinessScope">
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="type_id" jdbcType="VARCHAR" property="typeId" />
@@ -62,6 +62,9 @@
       (#{item.id},#{item.merchantId},#{item.typeId})
     </foreach>
   </insert>
+
+
+
 
 
 </mapper>

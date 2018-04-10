@@ -6,6 +6,7 @@ import cn.zoucl.cloud.common.utils.Query;
 import cn.zoucl.cloud.common.utils.Result;
 import cn.zoucl.cloud.common.utils.Validator;
 import cn.zoucl.cloud.trade.mapper.FurnitureSaleMapper;
+import cn.zoucl.cloud.trade.model.entity.CollectionFurniture;
 import cn.zoucl.cloud.trade.model.entity.FurnitureSale;
 import cn.zoucl.cloud.trade.model.vo.FurnitureSaleVo;
 import cn.zoucl.cloud.trade.service.FurnitureSaleService;
@@ -43,6 +44,7 @@ public class FurnitureSaleServiceImpl extends BaseServiceImpl<FurnitureSaleMappe
         }
         else{
             entity.setDateCreated(new Date());
+            entity.setIsShow("1");
             insertSelective(entity);
         }
 
@@ -76,6 +78,30 @@ public class FurnitureSaleServiceImpl extends BaseServiceImpl<FurnitureSaleMappe
         List<FurnitureSaleVo> results = mapper.selectFrontPage(query);
         return Result.success(new PageInfo<>(results));
     }
+
+    @Override
+    public Result addCollection(CollectionFurniture entity) {
+        if(null == entity)
+            return Result.fail();
+        CollectionFurniture collectionFurniture  = mapper.selectCollectionByUidAndFid(entity);
+        if(null != collectionFurniture)
+            return Result.fail("已添加收藏！");
+        if(Validator.isEmpty(entity.getId()))
+            entity.setId(IdUtil.createUUID(32));
+        mapper.addCollection(entity);
+        return Result.success(entity.getId());
+    }
+
+    @Override
+    public List<FurnitureSaleVo> selectCollections(String userId) {
+        return mapper.selectCollections(userId);
+    }
+
+    @Override
+    public void deleteCollectionsById(String id) {
+        mapper.deleteCollectionsById(id);
+    }
+
 
 
 }

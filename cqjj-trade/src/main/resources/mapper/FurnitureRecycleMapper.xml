@@ -15,6 +15,7 @@
     <result column="contact" jdbcType="VARCHAR" property="contact" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="is_show" jdbcType="VARCHAR" property="isShow" />
 
 
     <result column="date_created" jdbcType="DATE" property="dateCreated" />

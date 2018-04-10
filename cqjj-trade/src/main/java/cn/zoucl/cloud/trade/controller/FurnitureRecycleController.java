@@ -44,6 +44,7 @@ public class FurnitureRecycleController extends BaseController<FurnitureRecycleS
      */
     @GetMapping("/frontPage")
     public Result frontPage(@RequestParam Map<String, Object> params){
+        params.put("isShow","1");
         Query query = new Query(params);
         return baseService.selectPageByQuery(query);
     }

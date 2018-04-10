@@ -1,5 +1,6 @@
 package cn.zoucl.cloud.trade.mapper;
 
+import cn.zoucl.cloud.trade.model.entity.CollectionFurniture;
 import cn.zoucl.cloud.trade.model.entity.FurnitureSaleImg;
 import cn.zoucl.cloud.trade.model.entity.FurnitureSale;
 import cn.zoucl.cloud.trade.model.vo.FurnitureSaleVo;
@@ -25,4 +26,30 @@ public interface FurnitureSaleMapper extends Mapper<FurnitureSale> {
      * @return
      */
     List<FurnitureSaleVo> selectFrontPage(Map<String, Object> entity);
+
+
+    /**
+     * 添加收藏
+     * @param entity
+     */
+    void addCollection(CollectionFurniture entity );
+
+    /**
+     * 查询收藏
+     * @param userId
+     * @return
+     */
+    List<FurnitureSaleVo> selectCollections(String userId);
+
+    /**
+     * 删除收藏
+     * @param id
+     */
+    void deleteCollectionsById(String id);
+
+    /**
+     * 查询收藏
+     * @return
+     */
+    CollectionFurniture selectCollectionByUidAndFid(CollectionFurniture entity);
 }

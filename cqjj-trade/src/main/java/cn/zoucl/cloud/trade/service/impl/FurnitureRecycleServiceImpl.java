@@ -26,6 +26,7 @@ public class FurnitureRecycleServiceImpl extends BaseServiceImpl<FurnitureRecycl
         }
         else{
             entity.setDateCreated(new Date());
+            entity.setIsShow("1");
             insertSelective(entity);
         }
 

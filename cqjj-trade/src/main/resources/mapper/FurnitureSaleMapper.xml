@@ -13,7 +13,7 @@
     <result column="price" jdbcType="VARCHAR" property="price" />
     <result column="detail_info" jdbcType="VARCHAR" property="detailInfo" />
     <result column="head_img" jdbcType="VARCHAR" property="headImg" />
-    <result column="is_new" jdbcType="VARCHAR" property="is_new" />
+    <result column="is_new" jdbcType="VARCHAR" property="isNew" />
     <result column="keyword1" jdbcType="VARCHAR" property="keyword1" />
     <result column="keyword2" jdbcType="VARCHAR" property="keyword2" />
     <result column="keyword3" jdbcType="VARCHAR" property="keyword3" />
@@ -31,8 +31,6 @@
 
   </resultMap>
 
-
-  <!--  -->
   <select id="selectFrontPage" parameterType="java.util.Map" resultType="cn.zoucl.cloud.trade.model.vo.FurnitureSaleVo">
     select
     t1.id, t1.user_id as userId,
@@ -69,11 +67,8 @@
     </if>
   </select>
 
-
+  <!-- 家具图片 -->
   <resultMap id="ImgResultMap" type="cn.zoucl.cloud.trade.model.entity.FurnitureSaleImg">
-    <!--
-      WARNING - @mbggenerated
-    -->
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="sale_id" jdbcType="VARCHAR" property="saleId" />
     <result column="url" jdbcType="VARCHAR" property="url" />
@@ -93,5 +88,42 @@
       (#{item.id},#{item.saleId},#{item.url})
     </foreach>
   </insert>
+
+
+  <!-- 家具收藏 -->
+  <resultMap id="collectionFurnitureMap" type="cn.zoucl.cloud.trade.model.entity.CollectionFurniture">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="furniture_id" jdbcType="VARCHAR" property="furnitureId" />
+    <result column="date_created" jdbcType="DATE" property="dateCreated" />
+  </resultMap>
+
+  <insert id="addCollection" parameterType="java.util.List">
+    INSERT INTO t_collection_furniture(id, user_id, furniture_id, date_created) values
+    (#{id},#{userId},#{furnitureId},now())
+  </insert>
+
+  <select id="selectCollections" parameterType="java.lang.String" resultType="cn.zoucl.cloud.trade.model.vo.FurnitureSaleVo">
+    select
+    t1.id, t1.user_id as userId,
+    t1.title, t1.fn_name as fnName,
+    t1.price, t1.head_img as headImg,
+    t1.is_new as isNew,
+    t2.id as merchantId,
+    t2.merchant_name as merchantName,
+    t3.id as collectionId
+    from t_furniture_sale t1
+    LEFT JOIN t_merchant t2 on t1.user_id = t2.sys_user_id
+    inner join t_collection_furniture t3 on t1.id = t3.furniture_id
+    where t3.user_id = #{userId}
+  </select>
+
+  <select id="selectCollectionByUidAndFid" parameterType="cn.zoucl.cloud.trade.model.entity.CollectionFurniture" resultMap="collectionFurnitureMap">
+    select * from t_collection_furniture where user_id = #{userId} and furniture_id = #{furnitureId} limit 0,1
+  </select>
+
+  <delete id="deleteCollectionsById"  parameterType="java.lang.String" >
+    delete from t_collection_furniture where id = #{id}
+  </delete>
 
 </mapper>

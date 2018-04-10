@@ -21,7 +21,7 @@ public class MerchantServiceImpl extends BaseServiceImpl<MerchantMapper, Merchan
             entity.setMerchantId(mid);
         }
 
-        Merchant merchant = mapper.selectBySysUserId(entity.getId());
+        Merchant merchant = mapper.selectBySysUserId(entity.getSysUserId());
         if(null != merchant){
             updateSelectiveById(entity);
         }

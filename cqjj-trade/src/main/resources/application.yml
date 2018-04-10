@@ -32,6 +32,20 @@ mybatis:
   basepackage: cn.zoucl.cloud.trade.mapper
   xmlLocation: classpath:mapper/**/*.xml
 
+
+#################################################日志####################################################
+#com.mycompany.mavenspringboot.controller 日志 WARN级别输出
+logging:
+  file: logs/spring-boot-logging.log
+  level:
+    cn:
+      zoucl:
+        cloud:
+          trade:
+            controller: WARN
+            mapper: DEBUG
+
+
 eureka:
   instance:
     preferIpAddress: true

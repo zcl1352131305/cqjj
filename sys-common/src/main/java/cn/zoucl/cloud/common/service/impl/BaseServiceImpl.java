@@ -88,6 +88,7 @@ public class BaseServiceImpl<M extends Mapper<T>,T> implements BaseService<T> {
         for (Map.Entry<String, Object> entry : query.entrySet()) {
             criteria.andLike(entry.getKey(), "%" + entry.getValue().toString() + "%");
         }
+        example.setOrderByClause("date_updated desc");
         PageHelper.startPage(query.getPage(), query.getLimit());
         List<T> list = mapper.selectByExample(example);
         return Result.success(new PageInfo<>(list));
