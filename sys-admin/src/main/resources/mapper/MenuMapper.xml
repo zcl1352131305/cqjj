@@ -13,6 +13,7 @@
     <result column="href" jdbcType="VARCHAR" property="href" />
     <result column="icon" jdbcType="VARCHAR" property="icon" />
     <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="is_show" jdbcType="INTEGER" property="isShow" />
 
 
     <result column="date_created" jdbcType="DATE" property="dateCreated" />
@@ -35,6 +36,7 @@
     select group_id from t_base_group_member where user_id = #{userId}
     )
     and t2.type = "menu"
+    and t1.is_show = '1'
     ORDER BY t1.sort asc
   </select>
 

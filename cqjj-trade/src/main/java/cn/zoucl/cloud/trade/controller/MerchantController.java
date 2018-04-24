@@ -162,4 +162,21 @@ public class MerchantController extends BaseController<MerchantService,Merchant>
         }
     }
 
+
+
+    /**
+     * 根据商户id获取经营范围
+     * @param merchantId
+     * @return
+     */
+    @GetMapping("/merchantBusinessScopes/{merchantId}")
+    public Result getMerchantBusinessScop(@PathVariable String merchantId){
+        if(Validator.isEmpty(merchantId)){
+            return Result.fail("merchantId为空！");
+        }
+        else{
+            return Result.success(baseService.selectMerchantBusinessScopes(merchantId));
+        }
+    }
+
 }

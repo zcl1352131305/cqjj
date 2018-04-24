@@ -5,8 +5,11 @@ import cn.zoucl.cloud.common.utils.IdUtil;
 import cn.zoucl.cloud.common.utils.Validator;
 import cn.zoucl.cloud.trade.mapper.MerchantMapper;
 import cn.zoucl.cloud.trade.model.entity.Merchant;
+import cn.zoucl.cloud.trade.model.entity.MerchantBusinessScope;
 import cn.zoucl.cloud.trade.service.MerchantService;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class MerchantServiceImpl extends BaseServiceImpl<MerchantMapper, Merchant> implements MerchantService {
@@ -52,5 +55,11 @@ public class MerchantServiceImpl extends BaseServiceImpl<MerchantMapper, Merchan
             merchant.setBusinessScopes(mapper.selectBusinessScopes(merchant.getId()));
         }
         return merchant;
+    }
+
+
+
+    public List<MerchantBusinessScope> selectMerchantBusinessScopes(String merchantId){
+        return mapper.selectBusinessScopes(merchantId);
     }
 }

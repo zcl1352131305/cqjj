@@ -31,6 +31,9 @@ public class Menu extends BaseEntity {
 
     private Integer sort;
 
+    @Column(name = "is_show")
+    private String isShow;
+
 
 
 }

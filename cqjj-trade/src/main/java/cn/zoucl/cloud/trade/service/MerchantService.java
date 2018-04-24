@@ -2,6 +2,9 @@ package cn.zoucl.cloud.trade.service;
 
 import cn.zoucl.cloud.common.service.BaseService;
 import cn.zoucl.cloud.trade.model.entity.Merchant;
+import cn.zoucl.cloud.trade.model.entity.MerchantBusinessScope;
+
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/11/29 0029.
@@ -20,4 +23,12 @@ public interface MerchantService extends BaseService<Merchant> {
      * @return
      */
     Merchant selectByAdminId(String id);
+
+
+    /**
+     * 查询商户经营范围
+     * @param merchantId
+     * @return
+     */
+    public List<MerchantBusinessScope> selectMerchantBusinessScopes(String merchantId);
 }
