@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zoucl.cloud.trade.mapper.TransactionMapper">
+  <resultMap id="BaseResultMap" type="cn.zoucl.cloud.trade.model.entity.Transaction">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="admin_id" jdbcType="VARCHAR" property="adminId" />
+    <result column="trading_detail" jdbcType="VARCHAR" property="tradingDetail" />
+    <result column="total_price" jdbcType="VARCHAR" property="totalPrice" />
+    <result column="trade_type" jdbcType="VARCHAR" property="tradeType" />
+    <result column="pay_type" jdbcType="VARCHAR" property="payType" />
+    <result column="payee" jdbcType="VARCHAR" property="payee" />
+    <result column="trading_time" jdbcType="VARCHAR" property="tradingTime" />
+    <result column="buyer" jdbcType="VARCHAR" property="buyer" />
+    <result column="buyer_phone" jdbcType="VARCHAR" property="buyerPhone" />
+    <result column="deposit" jdbcType="VARCHAR" property="deposit" />
+    <result column="balance_pay_type" jdbcType="VARCHAR" property="balancePayType" />
+    <result column="balance_bring_people" jdbcType="VARCHAR" property="balanceBringPeople" />
+    <result column="balance_is_finish" jdbcType="VARCHAR" property="balanceIsFinish" />
+    <result column="balance_already_gathering" jdbcType="VARCHAR" property="balanceAlreadyGathering" />
+    <result column="balance_finish_time" jdbcType="VARCHAR" property="balanceFinishTime" />
+    <result column="balance_payee" jdbcType="VARCHAR" property="balancePayee" />
+
+    <result column="date_created" jdbcType="DATE" property="dateCreated" />
+    <result column="create_id" jdbcType="VARCHAR" property="createId" />
+    <result column="create_ip" jdbcType="VARCHAR" property="createIp" />
+    <result column="date_updated" jdbcType="DATE" property="dateUpdated" />
+    <result column="update_id" jdbcType="VARCHAR" property="updateId" />
+    <result column="update_ip" jdbcType="VARCHAR" property="updateIp" />
+    <result column="version" jdbcType="VARCHAR" property="version" />
+    <result column="del_flag" jdbcType="VARCHAR" property="delFlag" />
+
+  </resultMap>
+
+</mapper>
