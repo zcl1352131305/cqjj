@@ -22,20 +22,21 @@ public class TransactionServiceImpl extends BaseServiceImpl<TransactionMapper, T
         entity.setDateUpdated(new Date());
 
         if("1".equals(entity.getTradeType())){
-            entity.setDeposit("");
-            entity.setBalanceAlreadyGathering("");
-            entity.setBalanceBringPeople("");
-            entity.setBalanceFinishTime("");
-            entity.setBalanceIsFinish("");
-            entity.setBalancePayee("");
-            entity.setBalancePayType("");
+            entity.setDeposit(null);
+            entity.setBalanceAlreadyGathering(null);
+            entity.setBalanceBringPeople(null);
+            entity.setBalanceFinishTime(null);
+            entity.setBalanceIsFinish(null);
+            entity.setBalancePayee(null);
+            entity.setBalancePayType(null);
         }
         else{
             if(!"1".equals(entity.getBalancePayType())){
-                entity.setBalanceBringPeople("");
+                entity.setBalanceBringPeople(null);
             }
             if(!"1".equals(entity.getBalanceIsFinish())){
                 entity.setBalanceFinishTime(null);
+                entity.setBalancePayee(null);
             }
         }
 

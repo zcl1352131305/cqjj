@@ -28,6 +28,9 @@ spring:
     connectionProperties: "druid.stat.mergeSql:true;druid.stat.slowSqlMillis:5000"
     useGlobalDataSourceStat: true
 
+server:
+  port: 8002
+
 mybatis:
   basepackage: cn.zoucl.cloud.trade.mapper
   xmlLocation: classpath:mapper/**/*.xml
@@ -85,5 +88,3 @@ spring:
     username: root
     password: root
 
-server:
-  port: 8002

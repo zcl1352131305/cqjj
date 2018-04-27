@@ -19,6 +19,9 @@ spring:
     connectionProperties: "druid.stat.mergeSql:true;druid.stat.slowSqlMillis:5000"
     useGlobalDataSourceStat: true
 
+server:
+  port: 8000
+
 mybatis:
   basepackage: cn.zoucl.cloud.admin.mapper
   xmlLocation: classpath:mapper/**/*.xml
@@ -41,5 +44,3 @@ spring:
     username: root
     password: root
 
-server:
-  port: 8000
