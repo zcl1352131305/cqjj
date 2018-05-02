@@ -3,19 +3,18 @@ package cn.zoucl.cloud.trade.service.impl;
 import cn.zoucl.cloud.common.service.impl.BaseServiceImpl;
 import cn.zoucl.cloud.common.utils.IdUtil;
 import cn.zoucl.cloud.common.utils.Validator;
-import cn.zoucl.cloud.trade.mapper.TransactionMapper;
-import cn.zoucl.cloud.trade.model.entity.FurnitureSale;
-import cn.zoucl.cloud.trade.model.entity.Transaction;
-import cn.zoucl.cloud.trade.service.TransactionService;
+import cn.zoucl.cloud.trade.mapper.SaleAccountMapper;
+import cn.zoucl.cloud.trade.model.entity.SaleAccount;
+import cn.zoucl.cloud.trade.service.SaleAccountService;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
 @Service
-public class TransactionServiceImpl extends BaseServiceImpl<TransactionMapper, Transaction> implements TransactionService {
+public class SaleAccountServiceImpl extends BaseServiceImpl<SaleAccountMapper, SaleAccount> implements SaleAccountService {
 
 
-    public String saveOrUpdate(Transaction entity) {
+    public String saveOrUpdate(SaleAccount entity) {
         if(Validator.isEmpty(entity.getId())) {
             entity.setId(IdUtil.createUUID(32));
         }
@@ -40,7 +39,7 @@ public class TransactionServiceImpl extends BaseServiceImpl<TransactionMapper, T
             }
         }
 
-        Transaction sale = super.selectById(entity.getId());
+        SaleAccount sale = super.selectById(entity.getId());
         if(null != sale){
             updateById(entity);
         }

@@ -10,8 +10,8 @@ import javax.persistence.Table;
  * Created by Administrator on 2017/11/28 0028.
  */
 @Data
-@Table(name = "t_transaction")
-public class Transaction extends BaseEntity {
+@Table(name = "t_sale_account")
+public class SaleAccount extends BaseEntity {
 
     @Column(name = "admin_id")
     private String adminId;
