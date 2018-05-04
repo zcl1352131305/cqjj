@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50720
 File Encoding         : 65001
 
-Date: 2018-04-24 14:48:34
+Date: 2018-05-04 16:18:16
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -87,7 +87,7 @@ CREATE TABLE `t_furniture_recycle` (
   PRIMARY KEY (`id`),
   KEY `sys_c006744` (`title`),
   KEY `real_name` (`price`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='家具回收';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='家具回收信息展示';
 
 -- ----------------------------
 -- Records of t_furniture_recycle
@@ -150,13 +150,14 @@ CREATE TABLE `t_furniture_sale` (
   PRIMARY KEY (`id`),
   KEY `sys_c006744` (`title`),
   KEY `real_name` (`price`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='家具出售';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='家具出售信息展示';
 
 -- ----------------------------
 -- Records of t_furniture_sale
 -- ----------------------------
 INSERT INTO `t_furniture_sale` VALUES ('08d28a2998d6f261917f96fa7b688c4a', '03a7fbdc3d444c85a00047d3ca604034', '实木办公桌', '办公桌', '12c9476850c243f49cb221d985a7cc86', '500', '下班睡吧睡吧', 'http://p3npuv0x6.bkt.clouddn.com/20180331113606_819897.jpg', '2', '办公桌', '实木', 'NULL', '1', '2018-03-31 11:36:18', null, null, '2018-03-31 21:58:24', '03a7fbdc3d444c85a00047d3ca604034', '127.0.0.1', '0', '0');
 INSERT INTO `t_furniture_sale` VALUES ('175829e5d2a6aebc33862c8a890d1842', '03a7fbdc3d444c85a00047d3ca604034', '绿萝出售', '绿萝', '6d6cd839436e446bac12f63bccd9ee45', '10', '意大利', 'http://p3npuv0x6.bkt.clouddn.com/20180331113814_33e489.jpg', '1', '大家大家好', '睡觉睡觉睡觉觉', '大家大家', '1', '2018-03-31 11:38:22', null, null, '2018-03-31 15:16:47', '03a7fbdc3d444c85a00047d3ca604034', '127.0.0.1', '0', '0');
+INSERT INTO `t_furniture_sale` VALUES ('5b6e51f22507575f1d3e1338477d3bc1', '03a7fbdc3d444c85a00047d3ca604034', '说的话还是', '手机傻逼逼', '12c9476850c243f49cb221d985a7cc86', '5000', '是男是女你睡吧我爸', 'http://p3npuv0x6.bkt.clouddn.com/20180424164827_eb8a21.jpg', '1', 'NULL', 'NULL', 'NULL', '1', '2018-04-24 16:48:30', null, null, '2018-04-26 15:21:19', null, null, '0', '0');
 INSERT INTO `t_furniture_sale` VALUES ('9397f040c8b0b9b08c79ea7db89b7dd7', '03a7fbdc3d444c85a00047d3ca604034', '渝中区家具回收', '贴心', 'fc2c7ffd4065472999e6ad1f79c945c3', '150', '说说上班', 'http://p3npuv0x6.bkt.clouddn.com/20180331113525_55d5ef.jpg', '1', '铁床', '寝室', 'NULL', '1', '2018-03-31 11:35:38', null, null, '2018-03-31 11:35:38', null, null, '0', '0');
 INSERT INTO `t_furniture_sale` VALUES ('a66a13f3d544d930019758a48f8b36c1', '03a7fbdc3d444c85a00047d3ca604034', '精美电脑', '电脑', '6d6cd839436e446bac12f63bccd9ee45', '500', '大家大家你的呢', 'http://p3npuv0x6.bkt.clouddn.com/20180331113717_ea2b78.jpg', '2', '电脑', '全新', 'NULL', '1', '2018-03-31 11:37:25', null, null, '2018-03-31 11:37:25', null, null, '0', '0');
 INSERT INTO `t_furniture_sale` VALUES ('f8609076831e15e1a6c63a0dbd54dd6d', '03a7fbdc3d444c85a00047d3ca604034', '重庆家具回收', '办公椅子', '12c9476850c243f49cb221d985a7cc86', '500', '全新办公椅', 'http://p3npuv0x6.bkt.clouddn.com/20180330094952_09bf10.jpg', '1', '办公家具', '椅子', '低价', '1', '2018-03-30 09:50:30', null, null, '2018-03-31 10:19:04', '03a7fbdc3d444c85a00047d3ca604034', '127.0.0.1', '0', '0');
@@ -176,6 +177,7 @@ CREATE TABLE `t_furniture_sale_img` (
 -- Records of t_furniture_sale_img
 -- ----------------------------
 INSERT INTO `t_furniture_sale_img` VALUES ('06471a8e962d25995f11c2f938df949b', 'f8609076831e15e1a6c63a0dbd54dd6d', 'http://p3npuv0x6.bkt.clouddn.com/20180330094953_8ba02a.jpg');
+INSERT INTO `t_furniture_sale_img` VALUES ('375a25961e4cbe937f07d157f718b1f7', '5b6e51f22507575f1d3e1338477d3bc1', 'http://p3npuv0x6.bkt.clouddn.com/20180424164827_eb8a21.jpg');
 INSERT INTO `t_furniture_sale_img` VALUES ('386c560195c59ecc7184fc09f8ea8d28', 'f49722aaf7e7694122ffcf75434a6ec6', 'http://p3npuv0x6.bkt.clouddn.com/20180330144244_14e03b.jpg');
 INSERT INTO `t_furniture_sale_img` VALUES ('3b9f815909f0bfd3bb13a48f9333e900', '08d28a2998d6f261917f96fa7b688c4a', 'http://p3npuv0x6.bkt.clouddn.com/20180331113606_819897.jpg');
 INSERT INTO `t_furniture_sale_img` VALUES ('5004b4814468517b304e6602f78bb5df', '175829e5d2a6aebc33862c8a890d1842', 'http://p3npuv0x6.bkt.clouddn.com/20180331113814_33e489.jpg');
@@ -273,14 +275,27 @@ INSERT INTO `t_merchant_business_scope` VALUES ('c43c011d40508b63f7d28945618d00e
 INSERT INTO `t_merchant_business_scope` VALUES ('db662c94fbdc157e3f3422f9d7a76195', '1022283e1e253159e974e13c905e8e8a', '748b1741302a49b08fac51bc25cf0527');
 
 -- ----------------------------
--- Table structure for t_special_location_info
+-- Table structure for t_sale_account
 -- ----------------------------
-DROP TABLE IF EXISTS `t_special_location_info`;
-CREATE TABLE `t_special_location_info` (
+DROP TABLE IF EXISTS `t_sale_account`;
+CREATE TABLE `t_sale_account` (
   `id` varchar(32) NOT NULL COMMENT 'id',
-  `title` varchar(50) DEFAULT NULL COMMENT '标题',
-  `location` varchar(250) DEFAULT NULL COMMENT '位置',
-  `link_url` varchar(250) DEFAULT NULL COMMENT '跳转的url',
+  `admin_id` varchar(50) DEFAULT NULL COMMENT '交易所属账户',
+  `trading_detail` varchar(500) DEFAULT NULL COMMENT '交易明细（具体出售家具详情）',
+  `total_price` varchar(50) DEFAULT NULL COMMENT '总价',
+  `trade_type` varchar(50) DEFAULT NULL COMMENT '交易类型（1全款；2先交定金再付余款）',
+  `pay_type` varchar(1) DEFAULT NULL COMMENT '支付方式',
+  `payee` varchar(50) DEFAULT NULL COMMENT '收款人',
+  `trading_time` date DEFAULT NULL COMMENT '交易成功时间',
+  `buyer` varchar(50) DEFAULT NULL COMMENT '购买人',
+  `buyer_phone` varchar(255) DEFAULT NULL COMMENT '购买人电话',
+  `deposit` varchar(50) DEFAULT NULL COMMENT '定金（trade_type为2时有效）',
+  `balance_pay_type` varchar(1) DEFAULT NULL COMMENT '余款支付方式',
+  `balance_bring_people` varchar(50) DEFAULT NULL COMMENT '余款委托带回的人',
+  `balance_is_finish` varchar(1) DEFAULT NULL COMMENT '余款是否全部收完（1是，0否）',
+  `balance_already_gathering` varchar(50) DEFAULT NULL COMMENT '已收余款',
+  `balance_finish_time` datetime DEFAULT NULL COMMENT '余款收完时间',
+  `balance_payee` varchar(50) DEFAULT NULL COMMENT '余款收款人',
   `date_created` datetime DEFAULT NULL COMMENT '数据输入日期',
   `create_id` varchar(50) DEFAULT NULL COMMENT '建立者ID',
   `create_ip` varchar(50) DEFAULT NULL COMMENT '建立者IP',
@@ -290,14 +305,77 @@ CREATE TABLE `t_special_location_info` (
   `version` int(11) DEFAULT '0' COMMENT 'VERSION',
   `del_flag` char(1) DEFAULT '0' COMMENT '0否1是',
   PRIMARY KEY (`id`),
-  KEY `sys_c006744` (`title`),
-  KEY `real_name` (`location`)
+  KEY `sys_c006744` (`trading_time`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='销售记账记录';
+
+-- ----------------------------
+-- Records of t_sale_account
+-- ----------------------------
+INSERT INTO `t_sale_account` VALUES ('29d97d87af804dc7b3901d0551835811', '03a7fbdc3d444c85a00047d3ca604034', '办公椅子一套', '1080', '2', '2', '雷爽', '2018-04-26', null, null, '300', '1', '张超', '1', '780', '2018-05-02 00:00:00', '邹朝亮', null, null, null, '2018-05-02 17:41:02', '03a7fbdc3d444c85a00047d3ca604034', '127.0.0.1', null, null);
+INSERT INTO `t_sale_account` VALUES ('3b22cb54775e415ab27ff7412e4e44d0', '03a7fbdc3d444c85a00047d3ca604034', '办公桌一张，隔断办公桌一张，隔断50个位置办公桌一张，隔断50个位置50个位置', '1500', '2', '3', '刘小兰', '2018-04-26', null, null, '500', '1', '邹朝亮', '1', '1000', '2018-04-20 00:00:00', '好多个', null, null, null, '2018-04-27 14:36:56', '03a7fbdc3d444c85a00047d3ca604034', '127.0.0.1', null, null);
+INSERT INTO `t_sale_account` VALUES ('3f9449d3cc344d73b6f44ee170fadc56', '03a7fbdc3d444c85a00047d3ca604034', '床一张，床头柜两张', '1000', '2', '3', '刘小兰', '2018-05-02', null, null, '300', '2', null, '0', '0', null, null, '2018-05-02 17:42:17', null, null, '2018-05-02 17:42:17', null, null, '0', '0');
+INSERT INTO `t_sale_account` VALUES ('8e50dbca209e44e29fe33881d1f22cdd', '03a7fbdc3d444c85a00047d3ca604034', '红木家具1张去', '500', '1', '2', '邹朝亮', '2018-04-19', null, null, null, null, null, null, null, null, null, null, null, null, '2018-04-26 19:47:20', null, null, null, null);
+INSERT INTO `t_sale_account` VALUES ('9e2248ad2544456aa8a0a27dbadaa1e9', '03a7fbdc3d444c85a00047d3ca604034', '测试啥时候', '5000', '2', '1', '张总', '2018-05-02', null, null, '500', '1', '离开家', '0', '0', null, null, '2018-05-02 17:45:12', null, null, '2018-05-02 17:45:12', null, null, '0', '0');
+INSERT INTO `t_sale_account` VALUES ('ac5486e0ed094a05b913f2f424ba9159', '03a7fbdc3d444c85a00047d3ca604034', '家具使出吴文杰', '1200', '2', '3', '雷爽', '2018-04-27', null, null, '500', '3', null, '1', '700', '2018-04-27 00:00:00', '试试', null, null, null, '2018-04-27 13:34:36', '03a7fbdc3d444c85a00047d3ca604034', '127.0.0.1', null, null);
+INSERT INTO `t_sale_account` VALUES ('f62993b53c9741e6bd9156c940e47dcd', '03a7fbdc3d444c85a00047d3ca604034', '床一张，床头柜两张啦啦啦啦啦', '1000', '2', '3', '刘小兰', '2018-05-02', null, null, '300', '2', null, '0', '0', null, null, '2018-05-02 17:44:31', null, null, '2018-05-02 17:44:31', null, null, '0', '0');
+
+-- ----------------------------
+-- Table structure for t_special_info
+-- ----------------------------
+DROP TABLE IF EXISTS `t_special_info`;
+CREATE TABLE `t_special_info` (
+  `id` varchar(32) NOT NULL COMMENT 'id',
+  `title` varchar(50) DEFAULT NULL COMMENT '标题',
+  `location` varchar(250) DEFAULT NULL COMMENT '位置',
+  `link_url` varchar(250) DEFAULT NULL COMMENT '跳转的url',
+  `head_img` varchar(250) DEFAULT NULL COMMENT '标题图',
+  `date_created` datetime DEFAULT NULL COMMENT '数据输入日期',
+  `create_id` varchar(50) DEFAULT NULL COMMENT '建立者ID',
+  `create_ip` varchar(50) DEFAULT NULL COMMENT '建立者IP',
+  `date_updated` datetime DEFAULT NULL COMMENT '资料更新日期',
+  `update_id` varchar(50) DEFAULT NULL COMMENT '修改者ID',
+  `update_ip` varchar(50) DEFAULT NULL COMMENT '修改者IP',
+  `version` int(11) DEFAULT '0' COMMENT 'VERSION',
+  `del_flag` char(1) DEFAULT '0' COMMENT '0否1是',
+  PRIMARY KEY (`id`),
+  KEY `sys_c006744` (`title`) USING BTREE,
+  KEY `real_name` (`location`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='特殊位置的信息展示';
 
 -- ----------------------------
--- Records of t_special_location_info
+-- Records of t_special_info
 -- ----------------------------
-INSERT INTO `t_special_location_info` VALUES ('515d3f0be3f24833e7ad2fc84aea4759', '03a7fbdc3d444c85a00047d3ca604034', '设计师', 'http://p3npuv0x6.bkt.clouddn.com/20180330113220_5389dd.jpg', null, null, null, '2018-04-10 11:06:17', '03a7fbdc3d444c85a00047d3ca604034', '127.0.0.1', '0', '0');
+INSERT INTO `t_special_info` VALUES ('c88bf63386d345c09adb655a647591b1', '测试--------', 'wx-main-swiper', 'http://www.baidu.com', 'http://p3npuv0x6.bkt.clouddn.com/公众号_img.png', '2018-04-24 15:31:47', '03a7fbdc3d444c85a00047d3ca604034', '127.0.0.1', '2018-04-24 15:34:25', '03a7fbdc3d444c85a00047d3ca604034', '127.0.0.1', '0', '0');
+
+-- ----------------------------
+-- Table structure for t_spend_account
+-- ----------------------------
+DROP TABLE IF EXISTS `t_spend_account`;
+CREATE TABLE `t_spend_account` (
+  `id` varchar(32) NOT NULL COMMENT 'id',
+  `admin_id` varchar(50) DEFAULT NULL COMMENT '支出所属账户',
+  `trading_detail` varchar(500) DEFAULT NULL COMMENT '支出明细（具体支出详情）',
+  `total_price` varchar(50) DEFAULT NULL COMMENT '总价',
+  `spend_type` varchar(10) DEFAULT NULL COMMENT '支出事由',
+  `pay_type` varchar(1) DEFAULT NULL COMMENT '支付方式',
+  `drawee` varchar(50) DEFAULT NULL COMMENT '付款人',
+  `trading_time` date DEFAULT NULL COMMENT '交易成功时间',
+  `date_created` datetime DEFAULT NULL COMMENT '数据输入日期',
+  `create_id` varchar(50) DEFAULT NULL COMMENT '建立者ID',
+  `create_ip` varchar(50) DEFAULT NULL COMMENT '建立者IP',
+  `date_updated` datetime DEFAULT NULL COMMENT '资料更新日期',
+  `update_id` varchar(50) DEFAULT NULL COMMENT '修改者ID',
+  `update_ip` varchar(50) DEFAULT NULL COMMENT '修改者IP',
+  `version` int(11) DEFAULT '0' COMMENT 'VERSION',
+  `del_flag` char(1) DEFAULT '0' COMMENT '0否1是',
+  PRIMARY KEY (`id`),
+  KEY `sys_c006744` (`trading_time`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='支出记账记录';
+
+-- ----------------------------
+-- Records of t_spend_account
+-- ----------------------------
+INSERT INTO `t_spend_account` VALUES ('5cb90b4ea79640f2ba18bb4f1eb8e514', '03a7fbdc3d444c85a00047d3ca604034', '啦啦啦', '54601', null, '2', '邹安科', '2018-05-03', null, null, null, '2018-05-03 17:08:58', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for t_wechat_menu
