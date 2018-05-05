@@ -190,7 +190,7 @@ public class UserController extends BaseController<UserService,User> {
                 if(null != user){
                     user.setPassword(map.get("password"));
                     baseService.updateSelectiveById(user);
-                    redisService.remove(map.get("wechatUserId"));
+                    //redisService.remove(map.get("wechatUserId"));
                     return Result.success();
                 }
                 else{
@@ -237,7 +237,7 @@ public class UserController extends BaseController<UserService,User> {
                         user.setUsername(map.get("username"));
                         user.setName(map.get("username"));
                         baseService.updateSelectiveById(user);
-                        redisService.remove(map.get("wechatUserId"));
+                        //redisService.remove(map.get("wechatUserId"));
                         return Result.success();
                     }
                     else{

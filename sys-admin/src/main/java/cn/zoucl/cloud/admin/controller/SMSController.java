@@ -4,10 +4,9 @@ import cn.zoucl.cloud.admin.service.RedisService;
 import cn.zoucl.cloud.common.utils.Result;
 import cn.zoucl.cloud.common.utils.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017/11/28 0028.
@@ -35,6 +34,16 @@ public class SMSController {
         }
 
     }
+
+    @GetMapping("/checkCode")
+    public Result checkCode(@RequestParam Map<String,String> map){
+        String code = (String) redisService.get("validateCode_"+map.get("username"));
+        if(null == code || !code.equals(map.get("validateCode"))){
+            return Result.fail("验证码不正确！");
+        }
+        return Result.success();
+    }
+
 
     public static int getRandNum(int min, int max) {
         int randNum = min + (int)(Math.random() * ((max - min) + 1));

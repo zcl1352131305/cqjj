@@ -39,20 +39,21 @@ public class MerchantController extends BaseController<MerchantService,Merchant>
     public Result merchantLogin(@RequestBody Map<String, Object> params){
         Result rs = null;
 
-        JSONObject json = (JSONObject) redisService.get((String) params.get("id"));
-        if(null == json){
-            WechatUser user = wechatUserService.selectById(params.get("id"));
-            if(null == user){
-                rs = Result.fail("用户id为空！");
-            }
-            else {
-                rs = wechatUserService.wechatLogin(user.getMerchantAdminId());
-                json = JSON.parseObject(JSON.toJSONString(rs.getResult()));
-                json.put("wechatUserInfo",user);
-                long time = 120;
-                redisService.set((String) params.get("id"),json, time);
-            }
+        /*JSONObject json = (JSONObject) redisService.get((String) params.get("id"));
+        if(null == json){*/
+        JSONObject json = new JSONObject();
+        WechatUser user = wechatUserService.selectById(params.get("id"));
+        if(null == user){
+            rs = Result.fail("用户id为空！");
         }
+        else {
+            rs = wechatUserService.wechatLogin(user.getMerchantAdminId());
+            json = JSON.parseObject(JSON.toJSONString(rs.getResult()));
+            json.put("wechatUserInfo",user);
+            /*long time = 120;
+            redisService.set((String) params.get("id"),json, time);*/
+        }
+        /*}*/
         if(null != json && null != json.getJSONObject("userInfo")){
             if(json.getJSONObject("userInfo").get("password").equals(params.get("password"))){
                 json.getJSONObject("userInfo").remove("password");
@@ -65,6 +66,12 @@ public class MerchantController extends BaseController<MerchantService,Merchant>
 
         return rs;
     }
+
+    /*@GetMapping("/removeRedis/{key}")
+    public Result removeRedisWechatUserInfo(@PathVariable String key){
+        redisService.remove(key);
+        return Result.success();
+    }*/
 
     @PostMapping("/merchantRegist")
     public Result merchantRegist(){
@@ -149,7 +156,7 @@ public class MerchantController extends BaseController<MerchantService,Merchant>
                 user.setMerchantAdminId("");
                 wechatUserService.updateById(user);
 
-                redisService.remove(id);
+                //redisService.remove(id);
                 return Result.success("成功!");
             }
             else{
