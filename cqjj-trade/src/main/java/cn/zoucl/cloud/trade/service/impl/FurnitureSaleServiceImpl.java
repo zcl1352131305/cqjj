@@ -89,7 +89,7 @@ public class FurnitureSaleServiceImpl extends BaseServiceImpl<FurnitureSaleMappe
         if(Validator.isEmpty(entity.getId()))
             entity.setId(IdUtil.createUUID(32));
         mapper.addCollection(entity);
-        return Result.success(entity.getId());
+        return Result.success("成功！",entity.getId());
     }
 
     @Override

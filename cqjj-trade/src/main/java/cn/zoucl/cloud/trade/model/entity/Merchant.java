@@ -21,6 +21,9 @@ public class Merchant extends BaseEntity {
     @Column(name = "merchant_id")
     private String merchantId;
 
+    @Column(name = "market_id")
+    private String marketId;
+
     @Column(name = "merchant_name")
     private String merchantName;
 

@@ -33,6 +33,8 @@ public class FurnitureSaleVo{
 
     private String merchantName;
 
+    private String phone;
+
     // 收藏id
     private String collectionId;
 

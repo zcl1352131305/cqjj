@@ -37,8 +37,9 @@
     t1.title, t1.fn_name as fnName,
     t1.price, t1.head_img as headImg,
     t1.is_new as isNew,
-    t2.id as merchantId,
+    t2.id as merchantId,t2.phone as phone,
     t2.merchant_name as merchantName from t_furniture_sale t1
+
     LEFT JOIN t_merchant t2 on t1.user_id = t2.sys_user_id
     where t1.is_show = '1'
     <if test="searchType != null and searchType != ''">

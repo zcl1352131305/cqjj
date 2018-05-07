@@ -20,7 +20,7 @@ import java.util.Map;
 public class FurnitureSaleController extends BaseController<FurnitureSaleService,FurnitureSale> {
 
     /**
-     * 保存或更新家具回收
+     * 保存或更新家具回收frontPage
      * @param entity
      * @return
      */
