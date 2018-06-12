@@ -37,6 +37,7 @@
     t1.title, t1.fn_name as fnName,
     t1.price, t1.head_img as headImg,
     t1.is_new as isNew,
+    t1.type_id as typeId,
     t2.id as merchantId,t2.phone as phone,
     t2.merchant_name as merchantName from t_furniture_sale t1
 

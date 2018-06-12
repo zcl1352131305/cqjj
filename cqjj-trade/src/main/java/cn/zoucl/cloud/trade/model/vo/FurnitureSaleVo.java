@@ -29,6 +29,8 @@ public class FurnitureSaleVo{
 
     private String isNew;
 
+    private String typeId;
+
     private String merchantId;
 
     private String merchantName;
