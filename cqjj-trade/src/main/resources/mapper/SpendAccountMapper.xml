@@ -25,4 +25,10 @@
 
   </resultMap>
 
+  <select id="selectByMonth" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select * from t_spend_account where admin_id = #{adminId}
+    and DATE_FORMAT(trading_time,'%Y-%m') = #{month}
+  </select>
+
+
 </mapper>

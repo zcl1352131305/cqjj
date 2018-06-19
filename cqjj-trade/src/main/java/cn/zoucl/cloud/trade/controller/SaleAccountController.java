@@ -50,4 +50,21 @@ public class SaleAccountController extends BaseController<SaleAccountService,Sal
         }
     }
 
+    /**
+     * 待收尾款数量
+     * @param params
+     * @return
+     */
+    @GetMapping("/monthSaleAccounts")
+    public Result monthSaleAccounts(@RequestParam Map<String, Object> params){
+        if(null == params.get("month")){
+            return Result.fail("月份不能为空！");
+        }
+        if(null == params.get("adminId")){
+            return Result.fail("商户ID不能为空！");
+        }
+        List<SaleAccount> rsList = baseService.monthSaleAccounts(params);
+        return Result.success(rsList);
+    }
+
 }

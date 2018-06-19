@@ -12,6 +12,8 @@ import cn.zoucl.cloud.trade.service.SpendAccountService;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class SpendAccountServiceImpl extends BaseServiceImpl<SpendAccountMapper, SpendAccount> implements SpendAccountService {
@@ -33,5 +35,10 @@ public class SpendAccountServiceImpl extends BaseServiceImpl<SpendAccountMapper,
             insertSelective(entity);
         }
         return entity.getId();
+    }
+
+    @Override
+    public List<SpendAccount> monthSpendAccounts(Map<String, Object> entity) {
+        return mapper.selectByMonth(entity);
     }
 }

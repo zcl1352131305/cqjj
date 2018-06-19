@@ -35,4 +35,21 @@ public class SpendAccountController extends BaseController<SpendAccountService,S
         }
     }
 
+    /**
+     * 待收尾款数量
+     * @param params
+     * @return
+     */
+    @GetMapping("/monthSpendAccounts")
+    public Result monthSpendAccounts(@RequestParam Map<String, Object> params){
+        if(null == params.get("month")){
+            return Result.fail("月份不能为空！");
+        }
+        if(null == params.get("adminId")){
+            return Result.fail("商户ID不能为空！");
+        }
+        List<SpendAccount> rsList = baseService.monthSpendAccounts(params);
+        return Result.success(rsList);
+    }
+
 }

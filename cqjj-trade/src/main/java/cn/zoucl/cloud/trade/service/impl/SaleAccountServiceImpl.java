@@ -9,6 +9,8 @@ import cn.zoucl.cloud.trade.service.SaleAccountService;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class SaleAccountServiceImpl extends BaseServiceImpl<SaleAccountMapper, SaleAccount> implements SaleAccountService {
@@ -48,5 +50,10 @@ public class SaleAccountServiceImpl extends BaseServiceImpl<SaleAccountMapper, S
             insertSelective(entity);
         }
         return entity.getId();
+    }
+
+    @Override
+    public List<SaleAccount> monthSaleAccounts(Map<String, Object> entity) {
+        return mapper.selectByMonth(entity);
     }
 }
