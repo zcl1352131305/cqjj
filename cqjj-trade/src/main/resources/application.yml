@@ -1,8 +1,7 @@
 spring:
   profiles:
-    active: dev
+    active: prod
   redis:
-    host: localhost
     port: 6379
     pool:
       max-idle: 8
@@ -29,7 +28,7 @@ spring:
     useGlobalDataSourceStat: true
 
 server:
-  port: 8002
+  port: 8005
 
 mybatis:
   basepackage: cn.zoucl.cloud.trade.mapper
@@ -49,12 +48,6 @@ logging:
             mapper: DEBUG
 
 
-eureka:
-  instance:
-    preferIpAddress: true
-  client:
-    serviceUrl:
-      defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka/
 
 ribbon:
   eureka:
@@ -79,12 +72,40 @@ hystrix:
             timeoutInMilliseconds: 50000
 
 
+
 ---
 spring:
   profiles: dev
+  redis:
+      host: localhost
   datasource:
     driverClass: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/cqjj_hscs?serverTimezone=UTC&noAccessToProcedureBodies=true&useUnicode=true&zeroDateTimeBehavior=convertToNull&characterEncoding=utf8
     username: root
     password: root
 
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka/
+
+
+---
+spring:
+  profiles: prod
+  redis:
+      host: redis-server
+  datasource:
+    driverClass: com.mysql.jdbc.Driver
+    url: jdbc:mysql://mysql-server:3306/cqjj_hscs?serverTimezone=UTC&noAccessToProcedureBodies=true&useUnicode=true&zeroDateTimeBehavior=convertToNull&characterEncoding=utf8
+    username: root
+    password: root
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: http://zcl:zcl123@sys-center:8761/eureka/

@@ -1,14 +1,11 @@
-server:
-  port: 8001
 spring:
+  profiles:
+    active: prod
   application:
     name: sys-auth
-eureka:
-  instance:
-    preferIpAddress: true
-  client:
-    serviceUrl:
-      defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka/
+
+server:
+  port: 8003
 
 ribbon:
   eureka:
@@ -31,3 +28,27 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 50000
+
+
+---
+spring:
+  profiles: dev
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka/
+
+
+---
+spring:
+  profiles: prod
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: http://zcl:zcl123@sys-center:8761/eureka/

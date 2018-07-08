@@ -1,8 +1,16 @@
 spring:
   profiles:
-    active: dev
+    active: prod
   application:
     name: sys-admin
+  redis:
+    port: 6379
+    pool:
+      max-idle: 8
+      min-idle: 0
+      max-active: 8
+      max-wait: -1
+    password: 
   datasource:
     initialSize: 5
     minIdle: 5
@@ -20,11 +28,24 @@ spring:
     useGlobalDataSourceStat: true
 
 server:
-  port: 8000
+  port: 8001
 
 mybatis:
   basepackage: cn.zoucl.cloud.admin.mapper
   xmlLocation: classpath:mapper/**/*.xml
+
+
+
+---
+spring:
+  profiles: dev
+  redis:
+    host: localhost
+  datasource:
+    driverClass: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/cqjj?serverTimezone=UTC&noAccessToProcedureBodies=true&useUnicode=true&zeroDateTimeBehavior=convertToNull&characterEncoding=utf8
+    username: root
+    password: root
 
 eureka:
   instance:
@@ -34,13 +55,20 @@ eureka:
       defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka/
 
 
-
 ---
 spring:
-  profiles: dev
+  profiles: prod
+  redis:
+    host: redis-server
   datasource:
     driverClass: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/cqjj?serverTimezone=UTC&noAccessToProcedureBodies=true&useUnicode=true&zeroDateTimeBehavior=convertToNull&characterEncoding=utf8
+    url: jdbc:mysql://mysql-server:3306/cqjj?serverTimezone=UTC&noAccessToProcedureBodies=true&useUnicode=true&zeroDateTimeBehavior=convertToNull&characterEncoding=utf8
     username: root
     password: root
 
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: http://zcl:zcl123@sys-center:8761/eureka/

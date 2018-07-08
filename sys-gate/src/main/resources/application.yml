@@ -1,24 +1,19 @@
 spring:
+  profiles:
+    active: prod
   application:
     name: sys-gate
   redis:
-    host: localhost
     port: 6379
     pool:
       max-idle: 8
       min-idle: 0
       max-active: 8
       max-wait: -1
-    password: admin123
+    password:
+
 server:
   port: 8050
-eureka:
-  instance:
-    hostname: gateway
-  client:
-    serviceUrl:
-      defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka/
-
 
 
 zuul:
@@ -55,3 +50,31 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 50000
+
+
+---
+spring:
+  profiles: dev
+  redis:
+    host: localhost
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka/
+
+
+---
+spring:
+  profiles: prod
+  redis:
+    host: redis-server
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: http://zcl:zcl123@sys-center:8761/eureka/

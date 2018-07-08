@@ -11,7 +11,7 @@
 
 	<groupId>cn.zoucl.cloud.gate</groupId>
 	<artifactId>sys-gate</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0</version>
 	<packaging>jar</packaging>
 
 	<name>sys-gate</name>
@@ -20,21 +20,22 @@
 
 		<!-- 公共依赖 -->
 		<dependency>
-			<groupId>cn.zoucl.cloud</groupId>
+			<groupId>cn.zoucl.cloud.common</groupId>
 			<artifactId>sys-common</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<version>1.0</version>
 		</dependency>
 
 		<dependency>
 			<groupId>cn.zoucl.cloud.api</groupId>
 			<artifactId>sys-api</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<version>1.0</version>
 		</dependency>
 
 		<!-- log4j -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>log4j-over-slf4j</artifactId>
+			<version>1.7.21</version>
 		</dependency>
 
 		<dependency>
@@ -73,6 +74,23 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.4.3</version>
+				<configuration>
+					<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+					<dockerDirectory>src/main/docker</dockerDirectory>
+					<dockerHost>${docker.host}</dockerHost>
+					<resources>
+						<resource>
+							<targetPath>/</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>${project.build.finalName}.jar</include>
+						</resource>
+					</resources>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

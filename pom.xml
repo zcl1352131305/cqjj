@@ -7,10 +7,10 @@
     <groupId>cn.zoucl.cloud</groupId>
     <artifactId>spring-cloud</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <modules>
+    <!--<modules>
         <module>sys-common</module>
         <module>sys-api</module>
-    </modules>
+    </modules>-->
     <packaging>pom</packaging>
 
     <parent>
@@ -22,6 +22,9 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <docker.host>http://121.43.183.161:2375</docker.host>
+        <docker.image.prefix>cqjj</docker.image.prefix>
     </properties>
 
     <dependencyManagement>

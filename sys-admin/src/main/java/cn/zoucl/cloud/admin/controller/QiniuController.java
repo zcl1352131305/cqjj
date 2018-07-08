@@ -31,7 +31,7 @@ public class QiniuController {
         Result rs = null;
         String accessKey = "6Lke3aMkl3-g5X1gYUltXVDN9yssUpQ43QHmFqZN";
         String secretKey = "PLl0XB-VxENrr7JtLdNCRMgVaXFD36DUODKZIBM6";
-        String bucket = "develop";
+        String bucket = "product";
         Auth auth = Auth.create(accessKey, secretKey);
         String upToken;
         if(Validator.notEmpty(fileName)){
